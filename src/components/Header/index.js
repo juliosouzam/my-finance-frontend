@@ -5,25 +5,20 @@ import { Link } from 'react-router-dom';
 import { Container, Profile, Content } from './styles';
 
 export default function Header() {
-  const profile = useSelector(state => state.user.profile);
-
+  const profile = useSelector(state => state.user.user);
   return (
     <Container>
       <Content>
         <nav>
-          <Link to="/dashboard">DASHBOARD</Link>
+          <Link to="/dashboard">MY FINANCES</Link>
         </nav>
         <aside>
           <Profile>
             <div>
               <strong>{profile.name}</strong>
-              <Link to="/profile">Meu perfil</Link>
             </div>
             <img
-              src={
-                profile.avatar.url ||
-                'https://api.adorable.io/avatars/50/abott@adorable.png'
-              }
+              src="https://api.adorable.io/avatars/50/abott@adorable.png"
               alt={profile.name}
             />
           </Profile>

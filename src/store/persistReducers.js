@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'my_finance',
       storage,
-      whitelist: ['auth'],
+      whitelist: ['auth', 'user'],
     },
     reducers
   );

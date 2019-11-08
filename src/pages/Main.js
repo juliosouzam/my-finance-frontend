@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import uuid from 'uuid/v4';
 import { format } from 'date-fns';
+import { useSelector } from 'react-redux';
 
 const ADD_CATEGORY = gql`
   mutation MyMutation($objects: [categories_insert_input!]!) {
@@ -21,7 +22,6 @@ const UPD_CATEGORY = gql`
 `;
 
 export default function Main(props) {
-  console.log(props);
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState(false);
   const [category, setCategory] = useState({
@@ -35,6 +35,7 @@ export default function Main(props) {
   const [addCategory] = useMutation(ADD_CATEGORY);
   const [updCategory] = useMutation(UPD_CATEGORY);
 
+  // const profile = useSelector(state => state.user.user);
   useEffect(() => {
     // async function load() {
     //   const response = await client.query({

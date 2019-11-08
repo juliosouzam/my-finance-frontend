@@ -10,6 +10,7 @@ import history from './services/history';
 import './config/ReactotronConfig';
 import Routes from './routes';
 import { store, persistor } from './store';
+import GlobalStyles from './styles/global';
 
 const client = new ApolloClient({
   uri: '',
@@ -28,6 +29,7 @@ export default function App() {
           <ApolloConsumer>
             {client => (
               <Router history={history}>
+                <GlobalStyles />
                 <Routes client={client} />
               </Router>
             )}
