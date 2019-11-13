@@ -1,21 +1,38 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Container, Profile, Content } from './styles';
+import { signOut } from '../../store/modules/auth/actions';
 
 export default function Header() {
   const profile = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Content>
         <nav>
-          <Link to="/dashboard">MY FINANCES</Link>
+          <Link to="/">MY FINANCES</Link>
+          <ul>
+            <li>
+              <Link to="/">Categoria</Link>
+              <Link to="/">Categoria</Link>
+            </li>
+          </ul>
         </nav>
         <aside>
           <Profile>
             <div>
               <strong>{profile.name}</strong>
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(signOut());
+                }}
+              >
+                Sair
+              </button>
             </div>
             <img
               src="https://api.adorable.io/avatars/50/abott@adorable.png"

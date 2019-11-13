@@ -3,7 +3,6 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import uuid from 'uuid/v4';
 import { format } from 'date-fns';
-import { useSelector } from 'react-redux';
 
 const ADD_CATEGORY = gql`
   mutation MyMutation($objects: [categories_insert_input!]!) {
@@ -21,7 +20,7 @@ const UPD_CATEGORY = gql`
   }
 `;
 
-export default function Main(props) {
+export default function Main() {
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState(false);
   const [category, setCategory] = useState({

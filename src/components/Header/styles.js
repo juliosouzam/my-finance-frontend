@@ -8,7 +8,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   height: 64px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -18,13 +18,24 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
 
-    img {
-      margin-right: 20px;
-      padding-right: 20px;
-      border-radius: 1px solid #eee;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+
+      li {
+        font-size: 14px;
+
+        a {
+          margin-left: 20px;
+        }
+      }
     }
 
-    a {
+    button {
+      background: transparent;
+      border: 0;
       font-weight: bold;
       color: #7159c1;
     }
@@ -49,6 +60,14 @@ export const Profile = styled.div`
     strong {
       display: block;
       color: #333;
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+
+      font-weight: bold;
+      color: #7159c1;
     }
   }
 
