@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: 0;
-  background: #72e87a;
+  background: #002402;
   padding: 0 30px;
 `;
 
@@ -13,6 +13,10 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    color: #fff;
+  }
 
   nav {
     display: flex;
@@ -37,7 +41,7 @@ export const Content = styled.div`
       background: transparent;
       border: 0;
       font-weight: bold;
-      color: #7159c1;
+      color: #fff;
     }
   }
 
@@ -59,7 +63,7 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #333;
+      color: #fff;
     }
 
     button {
@@ -67,7 +71,7 @@ export const Profile = styled.div`
       border: 0;
 
       font-weight: bold;
-      color: #7159c1;
+      color: #fff;
     }
   }
 
