@@ -2,7 +2,6 @@ import React from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { PersistGate } from 'redux-persist/integration/react';
-import { ApolloConsumer } from 'react-apollo';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -13,10 +12,10 @@ import { store, persistor } from './store';
 import GlobalStyles from './styles/global';
 
 const client = new ApolloClient({
-  uri: '',
+  uri: process.env.REACT_APP_HASURA_GRAPHQL_URL,
   headers: {
     Accept: 'application/json',
-    'x-hasura-admin-secret': '',
+    'x-hasura-admin-secret': process.env.REACT_APP_HASURA_GRAPHQL_SECRET,
   },
   cache: new InMemoryCache(),
 });
@@ -26,14 +25,10 @@ export default function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <ApolloProvider client={client}>
-          <ApolloConsumer>
-            {client => (
-              <Router history={history}>
-                <GlobalStyles />
-                <Routes client={client} />
-              </Router>
-            )}
-          </ApolloConsumer>
+          <Router history={history}>
+            <GlobalStyles />
+            <Routes client={client} />
+          </Router>
         </ApolloProvider>
       </PersistGate>
     </Provider>
