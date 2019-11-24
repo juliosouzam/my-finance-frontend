@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import history from './services/history';
 import './config/ReactotronConfig';
 import Routes from './routes';
@@ -26,6 +27,7 @@ export default function App() {
       <PersistGate persistor={persistor}>
         <ApolloProvider client={client}>
           <Router history={history}>
+            <ToastContainer autoClose={4000} />
             <GlobalStyles />
             <Routes client={client} />
           </Router>

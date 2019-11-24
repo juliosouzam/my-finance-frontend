@@ -16,8 +16,8 @@ export default function Header() {
           <Link to="/">MY FINANCES</Link>
           <ul>
             <li>
-              <Link to="/categories">Categorias</Link>
-              <Link to="/">Ordem de Serviços</Link>
+              <Link to="/categories">Categories</Link>
+              <Link to="/providers">Providers</Link>
             </li>
           </ul>
         </nav>

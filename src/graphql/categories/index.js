@@ -14,6 +14,11 @@ export const GET_CATEGORIES = gql`
       id
       name
       slug
+      providers_aggregate {
+        aggregate {
+          count(columns: category_id, distinct: true)
+        }
+      }
     }
   }
 `;

@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import uuid from 'uuid/v4';
-import { format } from 'date-fns';
+import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Form, Input } from '@rocketseat/unform';
 import { toast } from 'react-toastify';
@@ -9,23 +7,16 @@ import history from '../../../services/history';
 
 import Loading from '../../../components/Loading';
 
-import { ADD_CATEGORY } from '../../../graphql/categories';
+import { UPD_CATEGORY } from '../../../graphql/categories';
 
-export default function Create() {
-  const [addCategory, { loading }] = useMutation(ADD_CATEGORY);
-  const [category] = useState({
-    id: uuid(),
-    name: '',
-    slug: '',
-    created_at: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
-    updated_at: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
-  });
+export default function Edit() {
+  const { category } = history.location.state;
+  const [updCategory, { loading }] = useMutation(UPD_CATEGORY);
 
   function handleSubmit({ name, slug }) {
     try {
-      const data = { ...category, name, slug };
-
-      addCategory({ variables: { objects: data } });
+      updCategory({ variables: { id: category.id, objects: { name, slug } } });
+      toast.success(`Categoria ${name} atualizada com sucesso`);
 
       history.push('/categories');
     } catch (error) {
@@ -37,7 +28,7 @@ export default function Create() {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} initialData={category}>
         <label htmlFor="">Digite o nome</label>
         <Input id="name" name="name" placeholder="Digite o nome" />
 

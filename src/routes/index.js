@@ -7,6 +7,10 @@ import Main from '../pages/Main';
 import Login from '../pages/Login';
 import CategoryList from '../pages/Category/List';
 import CategoryCreate from '../pages/Category/Create';
+import CategoryEdit from '../pages/Category/Edit';
+
+import ProviderList from '../pages/Providers/List';
+import ProviderCreate from '../pages/Providers/Create';
 
 export default function Routes() {
   return (
@@ -19,6 +23,15 @@ export default function Routes() {
         path="/categories/create"
         exact
         component={CategoryCreate}
+        isPrivate
+      />
+      <Route path="/categories/edit" exact component={CategoryEdit} isPrivate />
+
+      <Route path="/providers" exact component={ProviderList} isPrivate />
+      <Route
+        path="/providers/create"
+        exact
+        component={ProviderCreate}
         isPrivate
       />
     </Switch>

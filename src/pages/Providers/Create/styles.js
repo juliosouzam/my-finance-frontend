@@ -30,6 +30,10 @@ export const Container = styled.div`
       }
     }
 
+    select {
+      height: 40px;
+    }
+
     button {
       margin-top: 10px;
       border: 0;
