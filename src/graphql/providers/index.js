@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const ADD_PROVIDER = gql`
-  mutation MyProviders($objects: [categories_insert_input!]!) {
-    insert_categories(objects: $objects) {
+  mutation MyProviders($objects: [providers_insert_input!]!) {
+    insert_providers(objects: $objects) {
       affected_rows
     }
   }

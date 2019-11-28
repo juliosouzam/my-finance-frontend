@@ -12,7 +12,7 @@ import Loading from '../../../components/Loading';
 import { ADD_PROVIDER } from '../../../graphql/providers';
 import { GET_CATEGORIES } from '../../../graphql/categories';
 
-export default function Create() {
+export default function Edit() {
   const { data, loading: load } = useQuery(GET_CATEGORIES);
 
   const [addProvider, { loading }] = useMutation(ADD_PROVIDER);
@@ -38,10 +38,14 @@ export default function Create() {
 
       addProvider({ variables: { objects: data } });
 
+      if (loading || load) return <Loading />;
+
       history.push('/providers');
     } catch (error) {
       toast.error('Erro ao salvar provedor');
     }
+
+    return true;
   }
 
   return (
